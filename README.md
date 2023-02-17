@@ -1,6 +1,6 @@
 <p  align="center"><h1>Stone Challenger - Customer-API v.1.0.0</h1></p>
-
-Uma RESTful API
+<br />
+RESTful API
 
 <br /><br />
 
