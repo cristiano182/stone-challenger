@@ -78,7 +78,23 @@ npm install
 ```
 npm start
 ```
-###### Aplicação  disponivel em http://localhost:3000
+
+<br /><br />
+
+> ## **Deploy para producao**
+
+###### Com Docker
+```
+docker build -t stone-customer-api  .
+docker run -p 3000:3000 stone-customer-api -e <variaveis_ambiente>
+```
+
+
+###### Sem Docker
+```
+npm run build
+npm run start:prod
+```
 
 <br /><br />
 
