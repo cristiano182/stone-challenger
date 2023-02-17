@@ -81,7 +81,7 @@ npm start
 
 <br /><br />
 
-> ## **Deploy para producao**
+> ## **Deploy para produção**
 
 ###### Com Docker
 ```
