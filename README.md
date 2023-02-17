@@ -34,7 +34,7 @@ RESTful API
 
 > ## Variáveis de ambiente
 
-###### Para desenvolvimento local, criei o arquivo .env na raiz da aplicação  com o conteudo do arquivo .env-example (tambem na raiz do projeto), exemplo:
+###### Para desenvolvimento local, criei o arquivo .env na raiz da aplicação  com o conteudo do arquivo .env-example (também na raiz do projeto), exemplo:
 
 
 - **PORT**=3000
