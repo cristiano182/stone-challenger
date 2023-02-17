@@ -12,29 +12,29 @@ RESTful API
 - [Registrar um cliente - POST] `/customers/`
 
 
-###### *OBS1: Todos os endpoints requerem um Bearer token valido.
+###### *OBS1: Todos os endpoints requerem um Bearer token válido.
 ###### *OBS2: Solicite um token realizando uma request (POST) para [SSO](https://accounts.seguros.vitta.com.br/auth/realms/careers/protocol/openid-connect/token/)
-###### *OBS3: Adicione na sua request o cabecalho `Authorization` com o valor `Bearer (token solicitado no passo 2)`
+###### *OBS3: Adicione na sua request o cabeçalho `Authorization` com o valor `Bearer (token solicitado no passo 2)`
 
 <br /><br />
 
 > ## Documentação da API - Swagger
 
-- [Documentacao da API (Swagger) - GET] `/documents`
+- [Documentação da API (Swagger) - GET] `/documents`
 
 <br /><br />
 
 > ## Requisitos de sistema (Windows, Mac, Linux)
 
 - [Docker](https://www.docker.com/)
-- [NodeJS](https://nodejs.org/en/) Para executar a aplicacao localmente, sem docker
-- [Redis](https://redis.io/download/) Para executar a aplicacao localmente, sem docker
+- [NodeJS](https://nodejs.org/en/) Para executar a aplicação localmente, sem docker
+- [Redis](https://redis.io/download/) Para executar a aplicação  localmente, sem docker
 
 <br /><br />
 
-> ## Variaveis de ambiente
+> ## Variáveis de ambiente
 
-###### Para desenvolvimento local, criei o arquivo .env na raiz da aplicacao com o conteudo do arquivo .env-example (tambem na raiz do projeto), exemplo:
+###### Para desenvolvimento local, criei o arquivo .env na raiz da aplicação  com o conteudo do arquivo .env-example (tambem na raiz do projeto), exemplo:
 
 
 - **PORT**=3000
@@ -48,7 +48,7 @@ RESTful API
 <br /><br />
 
 
-> ## **Executando a aplicacao - Utilizando Docker (recomendado)**
+> ## **Executando a aplicação  - Utilizando Docker (recomendado)**
 
 ```
 git clone https://github.com/cristiano182/stone-challenger.git
@@ -59,12 +59,12 @@ cd stone-challenger
 ```
 docker-compose up
 ```
-###### Aplicacao disponivel em http://localhost:3000
+###### Aplicação  disponivel em http://localhost:3000
 
 <br /><br />
 
 
-> ## **Executando a aplicacao - Nao utilizando Docker (requer o Redis instalado e rodando localmente)**
+> ## **Executando a aplicação  - Nao utilizando Docker (requer o Redis instalado e rodando localmente)**
 
 ```
 git clone https://github.com/cristiano182/stone-challenger.git
@@ -78,7 +78,7 @@ npm install
 ```
 npm start
 ```
-###### Aplicacao disponivel em http://localhost:3000
+###### Aplicação  disponivel em http://localhost:3000
 
 <br /><br />
 
@@ -109,7 +109,7 @@ npm run test:cov
 <br /><br />
 
 
-> ## Metodologias e principios
+> ## Metodologias e Princípios
 * TDD
 * SOLID
 
