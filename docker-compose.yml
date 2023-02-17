@@ -1,0 +1,41 @@
+version: '3.7'
+
+services:
+  stone-redis:
+    container_name: stone-redis
+    image: redis
+    restart: always
+    ports:
+      - '6379:6379'
+    volumes: 
+      - redis-cache:/data
+  stone-customer-api:
+    container_name: stone-customer-api
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: stone-customer-api
+    environment:
+      - PORT=3000
+      - REDIS_HOST=stone-redis
+      - REDIS_PORT=6379
+      - SSO_CLIENT_SECRET=453000f7-47a0-4489-bc47-891c742650e2
+      - SSO_CLIENT_USERNME=cristianogb182@gmail.com
+      - SSO_CLIENT_ID=customers
+      - SSO_HOST=https://accounts.seguros.vitta.com.br/auth/realms/careers/protocol/openid-connect/token/introspect
+    expose:
+      - '3000'
+    links:
+      - stone-redis
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./src:/usr/src/app/src
+      - ./test:/usr/src/app/test
+    depends_on:
+      - stone-redis
+    command: npm run start:dev
+volumes:
+  redis-cache:
+    driver: local
