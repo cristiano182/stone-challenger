@@ -1,10 +1,4 @@
-
-<p  align="center">
-<a  href="http://nestjs.com/"  target="blank">
-<img  src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Stone_pagamentos.png"  width="250"  alt="logotipo stone" />
-</a>
-</p>
-<p  align="center">Stone Challenger - Customer-API v.1.0.0</p>
+<p  align="center"><h1>Stone Challenger - Customer-API v.1.0.0</h1></p>
 
 Uma RESTful API
 
