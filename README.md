@@ -76,7 +76,7 @@ docker-compose up
 git clone https://github.com/cristiano182/stone-challenger.git
 ```
 ```
-cd customer 
+cd stone-challenger 
 ```
 ```
 npm install
