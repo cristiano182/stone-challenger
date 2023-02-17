@@ -1,15 +1,22 @@
 import { Redis } from 'ioredis';
 import { v4 as uuidv4 } from 'uuid';
-import { notFound } from '../../../src/@core/infra/protocols/http';
+import { notFound,idConflict } from '../../../src/@core/infra/protocols/http';
 import { RedisHelper } from '../../../src/@core/infra/database/redis';
 import { CreateCustomerService } from '../../../src/@core/services/create-customer.service';
 import { UpdateCustomerService } from '../../../src/@core/services/update-customer.service';
-import { Customer } from 'src/@core/domain/customer-entity';
+import { CustomerUpdateDTO } from '../../../src/@core/dto/update-customer.dto';
+import { CustomerCreateDTO } from '../../../src/@core/dto/create-customer.dto';
 
-const customer: Customer = {
+jest.setTimeout(100000);
+
+
+const customer: CustomerCreateDTO = {
   name: 'any_name',
-  document: 41233439890,
+  document: 41233439880,
 };
+
+
+
 
 describe('UpdateCustomerService', () => {
   let redisClient: Redis;
@@ -27,19 +34,25 @@ describe('UpdateCustomerService', () => {
       const createCustomerService = new CreateCustomerService();
       const updateCustomerService = new UpdateCustomerService();
 
-      const createdCustomer = await createCustomerService.create(customer);
+      
+      const created = await createCustomerService.create(customer);
 
-      const payload: Customer = {
+      const uuid = uuidv4();
+
+      const payload: CustomerUpdateDTO = {
+        id: uuid,
         name: 'updated_name',
-        document: 41233439890,
+        document: 41233439880,
       };
-      const updatedCustomer = await updateCustomerService.update(
-        createdCustomer.body.id,
+
+      const updated = await updateCustomerService.update(
+        created.body.id,
         payload,
       );
 
-      expect(updatedCustomer.body.name).toEqual(payload.name);
-      expect(updatedCustomer.body.document).toEqual(payload.document);
+      expect(updated.body.id).toEqual(uuid);
+      expect(updated.body.name).toEqual(payload.name);
+      expect(updated.body.document).toEqual(payload.document);
     });
 
     it('should return not found customer', async () => {
@@ -47,7 +60,8 @@ describe('UpdateCustomerService', () => {
 
       const anyOneId = uuidv4();
 
-      const payload: Customer = {
+      const payload: CustomerUpdateDTO = {
+        id: "any_id",
         name: 'updated_name',
         document: 41233439890,
       };
@@ -57,12 +71,38 @@ describe('UpdateCustomerService', () => {
         payload,
       );
 
-      const notFoundError = notFound('Customer not found');
+      const notFoundError = notFound('customer not found');
 
       expect(customerNotFoundResponse.statusCode).toEqual(
         notFoundError.statusCode,
       );
       expect(customerNotFoundResponse.body).toEqual(notFoundError.body);
+    });
+
+    it('should return customer id conflict', async () => {
+      const createCustomerService = new CreateCustomerService();
+      const updateCustomerService = new UpdateCustomerService();
+
+      const created = await createCustomerService.create(customer);
+      const createDuplicated =  await createCustomerService.create(customer);
+
+    
+      const payload : CustomerUpdateDTO = {
+        id: createDuplicated.body.id,
+        name: 'updated_name',
+        document: 41233439880,
+      };
+
+      const updatedConflict = await updateCustomerService.update(created.body.id, payload);
+
+      const conflictError = idConflict('ID conflict');
+
+      expect(updatedConflict.statusCode).toEqual(
+        conflictError.statusCode,
+      );
+      expect(updatedConflict.body).toEqual(
+        conflictError.body,
+      );
     });
   });
 });

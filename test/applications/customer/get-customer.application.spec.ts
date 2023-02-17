@@ -1,10 +1,10 @@
 import { Test } from '@nestjs/testing';
 import { HttpResponse } from '../../../src/@core/infra/protocols/http';
-import { Customer } from '../../../src/@core/domain/customer-entity';
+import { CustomerGetDTO } from '../../../src/@core/dto/get-customer.dto';
 import { GetCustomerApplication } from '../../../src/@core/applications/get-customer.application';
 import { GetCustomerService } from '../../../src/@core/services/get-customer.service';
 
-const customer: Customer = {
+const customer: CustomerGetDTO = {
   id: 'any_id',
   name: 'any_name',
   document: 41233439880,

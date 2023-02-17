@@ -8,7 +8,7 @@ import {
   Res,
 } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { Customer, CustomerDTO } from '../domain/customer-entity';
+import { CustomerUpdateDTO } from '../dto/update-customer.dto';
 import { UpdateCustomerApplication } from '../applications/update-customer.application';
 
 @Controller('customers')
@@ -18,12 +18,12 @@ export class UpdateCustomerController {
 
   @ApiOkResponse({
     description: 'Update customer with ID params',
-    type: CustomerDTO,
+    type: CustomerUpdateDTO,
   })
   @Put(':id')
   async update(
     @Param('id', new ParseUUIDPipe()) customerId: string,
-    @Body() customerPayload: Customer,
+    @Body() customerPayload: CustomerUpdateDTO,
     @Res() response: Response,
   ) {
     const updateCustomer = await this.updateCustomerApplication.update(

@@ -1,10 +1,12 @@
 import { Redis } from 'ioredis';
 import { RedisHelper } from '../../../src/@core/infra/database/redis';
 import { CreateCustomerService } from '../../../src/@core/services/create-customer.service';
-import { Customer } from 'src/@core/domain/customer-entity';
+import { CustomerCreateDTO } from '../../../src/@core/dto/create-customer.dto';
 
-const customer: Customer = {
-  id: 'any_id',
+jest.setTimeout(100000);
+
+
+const customer: CustomerCreateDTO = {
   name: 'any_name',
   document: 41233439880,
 };

@@ -3,9 +3,10 @@ import { Test } from '@nestjs/testing';
 import { UpdateCustomerController } from '../../../src/@core/controller/update-customer.controller';
 import { UpdateCustomerApplication } from '../../../src/@core/applications/update-customer.application';
 import { HttpResponse } from '../../../src/@core/infra/protocols/http';
-import { Customer } from 'src/@core/domain/customer-entity';
+import { CustomerUpdateDTO } from '../../../src/@core/dto/update-customer.dto';
 
-const customer: Customer = {
+
+const customer: CustomerUpdateDTO = {
   id: 'any_id',
   name: 'any_name',
   document: 41233439880,

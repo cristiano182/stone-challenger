@@ -1,6 +1,6 @@
 import { Controller, Get, Param, ParseUUIDPipe, Res } from '@nestjs/common';
 import { ApiNotFoundResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { CustomerDTO } from '../domain/customer-entity';
+import { CustomerGetDTO } from '../dto/get-customer.dto';
 import { Response } from 'express';
 import { GetCustomerApplication } from '../applications/get-customer.application';
 
@@ -11,7 +11,7 @@ export class GetCustomerController {
 
   @ApiOkResponse({
     description: 'Get customer with ID params',
-    type: CustomerDTO,
+    type: CustomerGetDTO,
   })
   @ApiNotFoundResponse({
     description: 'Customer not found',

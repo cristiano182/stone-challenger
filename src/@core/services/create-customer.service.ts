@@ -3,12 +3,12 @@ import { Injectable } from '@nestjs/common';
 import { RedisHelper } from '../infra/database/redis';
 import { created, HttpResponse } from '../infra/protocols/http';
 import { CUSTOMER_REDIS_PREFIX } from '../infra/constants/redis';
-import { Customer } from 'src/@core/domain/customer-entity';
+import { CustomerCreateDTO } from 'src/@core/dto/create-customer.dto';
 import { CreateCustomerServiceInterface } from '../interfaces/services/create-customer-service.interface';
 
 @Injectable()
 export class CreateCustomerService implements CreateCustomerServiceInterface {
-  async create(customerPayload: Customer): Promise<HttpResponse> {
+  async create(customerPayload: CustomerCreateDTO): Promise<HttpResponse> {
     const redisClient = await RedisHelper.getClient();
 
     const generatedUUID = uuidv4();

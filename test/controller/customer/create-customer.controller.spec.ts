@@ -3,10 +3,9 @@ import { Test } from '@nestjs/testing';
 import { CreateCustomerController } from '../../../src/@core/controller/create-customer.controller';
 import { CreateCustomerApplication } from '../../../src/@core/applications/create-customer.application';
 import { HttpResponse } from '../../../src/@core/infra/protocols/http';
-import { Customer } from 'src/@core/domain/customer-entity';
+import { CustomerCreateDTO } from '../../../src/@core/dto/create-customer.dto';
 
-const customer: Customer = {
-  id: 'any_id',
+const customer: CustomerCreateDTO = {
   name: 'any_name',
   document: 41233439880,
 };

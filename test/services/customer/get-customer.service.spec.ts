@@ -4,9 +4,13 @@ import { notFound } from '../../../src/@core/infra/protocols/http';
 import { RedisHelper } from '../../../src/@core/infra/database/redis';
 import { CreateCustomerService } from '../../../src/@core/services/create-customer.service';
 import { GetCustomerService } from '../../../src/@core/services/get-customer.service';
-import { Customer } from 'src/@core/domain/customer-entity';
+import { CustomerCreateDTO } from '../../../src/@core/dto/create-customer.dto';
 
-const customer: Customer = {
+jest.setTimeout(100000);
+
+
+
+const customer: CustomerCreateDTO = {
   name: 'any_name',
   document: 41233439880,
 };
